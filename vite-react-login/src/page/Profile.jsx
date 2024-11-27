@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import Navbar from './Navbar';
+import '../css/profile.css';
 
 const Profile = () => {
     const [user, setUser] = useState(null);
@@ -39,7 +41,9 @@ const Profile = () => {
     const closeAd = () => setIsAdVisible(false);
 
     return (
-        <div>
+        <div className="profile-page">
+            <Navbar />
+
             {/* ป๊อปอัพโปรโมชั่น */}
             {isAdVisible && promotions.length > 0 && (
                 <div className="ad-popup-overlay">
@@ -57,14 +61,18 @@ const Profile = () => {
             )}
 
             {/* ข้อมูลโปรไฟล์ */}
-            {user ? (
-                <div className="profile-container">
-                    <h2>{user.fname} {user.lname}</h2>
-                    <p>Email: {user.email}</p>
-                </div>
-            ) : (
-                <p>Loading profile...</p>
-            )}
+            <div className="profile-container">
+                {user ? (
+                    <div className="profile-details">
+                        <h2>{user.fname} {user.lname}</h2>
+                        <p>Email: {user.email}</p>
+                        <p>Phone: {user.phone}</p> {/* สมมุติว่ามีข้อมูลเบอร์โทร */}
+                        <button className="edit-profile-btn">Edit Profile</button> {/* ปุ่มสำหรับแก้ไขโปรไฟล์ */}
+                    </div>
+                ) : (
+                    <p>Loading profile...</p>
+                )}
+            </div>
         </div>
     );
 };

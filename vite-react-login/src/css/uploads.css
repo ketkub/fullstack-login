@@ -1,0 +1,70 @@
+/* กำหนดการจัดรูปแบบของฟอร์มอัปโหลด */
+.h1-uploads {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 20px;
+  color: #333;
+}
+
+.form-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin: 0 auto; /* จัดให้อยู่กลางหน้าจอ */
+}
+
+.label-uploads {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.input-uploads {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.input-uploads:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.button-upload {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.button-upload:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.button-upload:hover {
+  background-color: #45a049;
+}
+
+.p-up {
+  color: red;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 10px;
+}

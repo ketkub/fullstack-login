@@ -29,7 +29,7 @@ function Login() {
 
       // Redirect based on the user's role
       if (data.role === 'admin') {
-        window.location.href = '/UploadPromotion';  // Admin dashboard
+        window.location.href = '/Admindashboard';  // Admin dashboard
       } else {
         window.location.href = '/';  // Regular user dashboard
       }

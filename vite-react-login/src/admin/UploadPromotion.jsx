@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import AdminNavbar from './AdminNavbar';
+import '../css/uploads.css'
+import Sidebar from './Sidebar';
 
 const UploadPromotion = () => {
     const [image, setImage] = useState(null);
@@ -49,15 +50,15 @@ const UploadPromotion = () => {
 
     return (
         <div>
-            <AdminNavbar />
-            <h1>Upload Promotion Image</h1>
-            <form onSubmit={handleSubmit}>
+            <Sidebar/>
+            <h1 className='h1-uploads'>Upload Promotion Image</h1>
+            <form className='form-upload' onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="image">Image:</label>
-                    <input type="file" id="image" onChange={handleImageChange} />
+                    <label className='label-uploads' htmlFor="image">Image:</label>
+                    <input className='input-uploads' type="file" id="image" onChange={handleImageChange} />
                 </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                <button type="submit" disabled={loading}>
+                {error && <p className='p-up' style={{ color: 'red' }}>{error}</p>}
+                <button className="button-upload"type="submit" disabled={loading}>
                     {loading ? 'Uploading...' : 'Upload'}
                 </button>
             </form>

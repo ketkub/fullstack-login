@@ -1,0 +1,70 @@
+/* เริ่มจากการจัดรูปแบบ sidebar ให้ดูเรียบง่ายและทันสมัย */
+.sidebar {
+  width: 250px;
+  height: 100vh; /* ให้ขนาดเต็มความสูงของหน้าจอ */
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #ecf0f1; /* สีที่อ่อนกว่า */
+}
+
+/* สไตล์เมนู */
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background-color: #34495e; /* สีที่เข้มขึ้นเมื่อ hover */
+}
+
+/* ไอคอนในแต่ละเมนู */
+.icon {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  color: #ecf0f1;
+  transition: color 0.3s ease;
+}
+
+/* เปลี่ยนสีไอคอนเมื่อ hover */
+.menu-item:hover .icon {
+  color: #1abc9c;
+}
+
+/* ลิงก์ในเมนู */
+.menu-item a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* เปลี่ยนสีตัวอักษรในลิงก์เมื่อ hover */
+.menu-item:hover a {
+  color: #1abc9c;
+}

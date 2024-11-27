@@ -1,31 +1,126 @@
-/* navbar.css */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-brand a {
+  text-decoration: none;
+  color: #333;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1rem; /* ระยะห่างระหว่างปุ่ม */
+}
+
+.nav-links li {
+  margin: 0 1rem;
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #007BFF;
+}
+
+/* Dropdown Menu */
+.nav-links .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0.5rem 0;
+}
+
+.nav-links li:hover .dropdown {
+  display: block;
+}
+
+.nav-links .dropdown li {
+  padding: 0.5rem 1rem;
+}
+
+.nav-links .dropdown a {
+  color: #333;
+}
+
+.nav-links .dropdown a:hover {
+  color: #007BFF;
+}
+
+/* ปุ่มเข้าสู่ระบบและลงทะเบียน */
+.nav-links .login,
+.nav-links .signup {
+  background-color: #007bff; /* สีพื้นหลัง */
+  color: white; /* สีตัวอักษร */
+  border: none; /* ลบเส้นขอบ */
+  padding: 10px 20px; /* เพิ่มพื้นที่ด้านใน */
+  border-radius: 5px; /* โค้งมน */
+  font-size: 16px; /* ขนาดตัวอักษร */
+  transition: transform 0.3s, box-shadow 0.3s; /* แอนิเมชัน */
+  cursor: pointer; /* เปลี่ยนเป็นมือ */
+}
+
+.nav-links .signup {
+  background-color: #28a745; /* สีเขียวสำหรับปุ่มลงทะเบียน */
+}
+
+.nav-links .login:hover,
+.nav-links .signup:hover {
+  transform: translateY(-2px); /* ยกปุ่มขึ้น */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
+  animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   }
-  
-  .navbar-brand {
-    color: white;
-    font-size: 24px;
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   }
-  
-  .navbar-links {
-    list-style-type: none;
-    display: flex;
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   }
-  
-  .navbar-links li {
-    margin-left: 20px;
-  }
-  
-  .navbar-links a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .navbar-links a:hover {
-    text-decoration: underline;
-  }
+}
+
+/* ระยะห่างเฉพาะปุ่ม login และ signup */
+.nav-links .signup {
+  margin-left: 10px;
+}
+
+/* ปุ่มออกจากระบบ */
+.nav-links .logout-button {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nav-links .logout-button:hover {
+  color: #FF0000;
+}
