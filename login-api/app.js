@@ -231,7 +231,7 @@ app.delete('/companies/:id', verifyToken, verifyAdmin, (req, res) => {
 });
 
 app.get('/users', verifyToken, verifyAdmin, (req, res) => {
-    connection.query('SELECT id, email, fname, lname, role FROM users', (err, results) => {
+    connection.query('SELECT id, email, fname, lname, role FROM users WHERE role = "user"', (err, results) => {
         if (err) {
             return res.status(500).json({ status: 'error', message: 'Database error', error: err.message });
         }

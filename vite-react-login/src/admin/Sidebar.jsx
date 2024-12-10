@@ -1,4 +1,4 @@
-import { FaHome, FaUpload } from 'react-icons/fa';
+import { FaHome, FaUpload, FaUser, FaPlus } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/Sidebar.css';
 
@@ -23,7 +23,7 @@ function Sidebar() {
         </li>
         <li className="menu-item">
           <Link to="/UploadPromotion" className="menu-link">
-            <FaUpload className="icon" />
+            <FaPlus className="icon" />
             <span>Upload Promotion</span>
           </Link>
         </li>
@@ -31,6 +31,12 @@ function Sidebar() {
           <Link to="/AdminCompanyCRUD" className="menu-link">
             <FaUpload className="icon" />
             <span>CRUD company</span>
+          </Link>
+        </li>
+        <li className="menu-item">
+          <Link to="/UserList" className="menu-link">
+            <FaUser className="icon" />
+            <span>ข้อมูลนิสิต</span>
           </Link>
         </li>
         <li className="logout-button-admin">

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Sidebar from './Sidebar'; // ต้องเพิ่ม Sidebar component
-import '../css/adminCompanyCRUD.css';
-
+import '../css/AdminCompanyCRUD.css'
 const AdminCompanyCRUD = () => {
   const [companies, setCompanies] = useState([]);
   const [formData, setFormData] = useState({ name: '', description: '', logo: '' });
@@ -107,12 +106,12 @@ const AdminCompanyCRUD = () => {
   }
 
   return (
-    <div className="admin-container">
+    <div className="admin-container-1">
       <Sidebar />
-      <div className="admin-content">
+      <div className="admin-content-1">
         <h1 className="page-title">จัดการข้อมูลบริษัท</h1>
 
-        <form className="company-form" onSubmit={handleSubmit}>
+        <form className="company-form-1" onSubmit={handleSubmit}>
           <input
             className="input-field-1"
             type="text"
@@ -145,13 +144,13 @@ const AdminCompanyCRUD = () => {
           <p className="loading-message-1">กำลังโหลดข้อมูล...</p>
         ) : companies.length > 0 ? (
           <>
-            <h2 className="company-list-title">รายชื่อบริษัท</h2>
-            <ul className="company-list">
+            <h2 className="company-list-title-1">รายชื่อบริษัท</h2>
+            <ul className="company-list-1">
               {companies.map((company) => (
-                <li className="company-item" key={company.id}>
+                <li className="company-item-1" key={company.id}>
                   {company.name}
                   <button
-                    className="delete-btn"
+                    className="delete-btn-1"
                     onClick={() => handleDelete(company.id)}
                   >
                     ลบ
@@ -161,7 +160,7 @@ const AdminCompanyCRUD = () => {
             </ul>
           </>
         ) : (
-          <p className="no-companies">ไม่มีข้อมูลบริษัท</p>
+          <p className="no-companies-1">ไม่มีข้อมูลบริษัท</p>
         )}
       </div>
     </div>
