@@ -1,102 +1,83 @@
-/* ทั่วไป */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* ส่วนของ Dashboard */
-  .admin-dashboard-container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  /* Sidebar */
-  .sidebar {
-    background-color: #2d3a4f;
-    color: white;
-    width: 250px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .sidebar .sidebar-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .sidebar-menu {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar-menu .menu-item {
-    margin: 15px 0;
-  }
-  
-  .sidebar-menu .menu-item .icon {
-    margin-right: 10px;
-  }
-  
-  .sidebar-menu .menu-item a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-  }
-  
-  /* ส่วนของ Content */
-  .admin-dashboard-content {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #f4f6f9;
-    overflow-y: auto;
-  }
-  
-  .admin-dashboard-content h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
-  
-  .dashboard-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
-  
-  .dashboard-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .dashboard-card h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .dashboard-card p {
-    font-size: 20px;
-    color: #333;
-  }
-  
-  /* ส่วนของ Error เมื่อไม่ได้ล็อกอิน */
-  .auth-error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #ffdddd;
-    color: #ff0000;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .auth-error p {
-    margin: 0;
-  }
-  
+/* dashboard.css */
+
+/* General Layout */
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f6f9;
+  text-align: center;
+  padding: 10px;
+}
+
+.error-message {
+  color: red;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.sidebar a:hover {
+  background-color: #34495e;
+}
+
+/* Dashboard Styles */
+.dashboard {
+  margin-left: 250px; /* Sidebar width */
+  padding: 20px;
+  flex-grow: 1;
+  background-color: #ecf0f1;
+}
+
+.name-dashboard {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+}
+
+.stat-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  text-align: center;
+}
+
+.status {
+  font-size: 24px;
+  color: #34495e;
+}
+
+.stat-box p {
+  font-size: 32px;
+  font-weight: bold;
+  color: #2980b9;
+}

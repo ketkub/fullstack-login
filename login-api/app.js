@@ -166,6 +166,92 @@ app.get('/promotions', (req, res) => {
     });
 });
 
+app.post('/companies', verifyToken, verifyAdmin, (req, res) => {
+    const { name, description, logo } = req.body;
+    if (!name || !description) {
+        return res.status(400).json({ status: 'error', message: 'Name and description are required' });
+    }
+
+    connection.query('INSERT INTO companies (name, description, logo) VALUES (?, ?, ?)', 
+    [name, description, logo || null], 
+    (err, results) => {
+        if (err) {
+            return res.status(500).json({ status: 'error', message: 'Database error', error: err.message });
+        }
+        res.status(201).json({ status: 'ok', message: 'Company added successfully', id: results.insertId });
+    });
+});
+
+app.get('/companies', (req, res) => {
+    connection.query('SELECT * FROM companies', (err, results) => {
+        if (err) {
+            return res.status(500).json({ status: 'error', message: 'Database error', error: err.message });
+        }
+        res.json({ status: 'ok', companies: results });
+    });
+});
+
+app.get('/companies/:id', (req, res) => {
+    const { id } = req.params;
+
+    connection.query('SELECT * FROM companies WHERE id = ?', [id], (err, results) => {
+        if (err) {
+            return res.status(500).json({ status: 'error', message: 'Database error', error: err.message });
+        }
+        if (results.length === 0) {
+            return res.status(404).json({ status: 'error', message: 'Company not found' });
+        }
+        res.json({ status: 'ok', company: results[0] });
+    });
+});
+
+app.put('/companies/:id', verifyToken, verifyAdmin, (req, res) => {
+    const { id } = req.params;
+    const { name, description, logo } = req.body;
+
+    connection.query('UPDATE companies SET name = ?, description = ?, logo = ? WHERE id = ?', 
+    [name, description, logo, id], 
+    (err, results) => {
+        if (err) {
+            return res.status(500).json({ status: 'error', message: 'Database error', error: err.message });
+        }
+        res.json({ status: 'ok', message: 'Company updated successfully' });
+    });
+});
+
+app.delete('/companies/:id', verifyToken, verifyAdmin, (req, res) => {
+    const { id } = req.params;
+
+    connection.query('DELETE FROM companies WHERE id = ?', [id], (err, results) => {
+        if (err) {
+            return res.status(500).json({ status: 'error', message: 'Database error', error: err.message });
+        }
+        res.json({ status: 'ok', message: 'Company deleted successfully' });
+    });
+});
+
+app.get('/users', verifyToken, verifyAdmin, (req, res) => {
+    connection.query('SELECT id, email, fname, lname, role FROM users', (err, results) => {
+        if (err) {
+            return res.status(500).json({ status: 'error', message: 'Database error', error: err.message });
+        }
+        res.json({ status: 'ok', users: results });
+    });
+});
+
+
+app.delete('/users/:id', verifyToken, verifyAdmin, (req, res) => {
+    const { id } = req.params;
+
+    connection.query('DELETE FROM users WHERE id = ?', [id], (err, results) => {
+        if (err) {
+            return res.status(500).json({ status: 'error', message: 'Database error', error: err.message });
+        }
+        res.json({ status: 'ok', message: 'User deleted successfully' });
+    });
+});
+
+
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Web server started on port ${PORT}`);

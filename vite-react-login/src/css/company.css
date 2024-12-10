@@ -1,0 +1,48 @@
+.company-list-container {
+    padding: 20px;
+  }
+  
+  .company-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .company-card {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+  }
+  
+  .company-logo {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  .company-logo-large {
+    max-width: 200px;
+    height: auto;
+  }
+  
+  .btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-apply {
+    background-color: #28a745;
+  }
+  
+  .btn-apply:hover {
+    background-color: #218838;
+  }
+  

@@ -1,9 +1,11 @@
-import React from 'react';
+import { useState, useEffect } from 'react'; // Import useState and useEffect
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/navbar.css'; // ใช้ CSS สำหรับสไตล์
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
 
   // ตรวจสอบสถานะการเข้าสู่ระบบจาก token ใน localStorage
   const isLoggedIn = localStorage.getItem('token') !== null;
@@ -12,8 +14,20 @@ const Navbar = () => {
     // ลบ token และ role จาก localStorage
     localStorage.removeItem('token');
     localStorage.removeItem('role');
-    navigate('/login'); // เปลี่ยนเส้นทางไปยังหน้าเข้าสู่ระบบ
+    navigate('/'); // เปลี่ยนเส้นทางไปยังหน้าเข้าสู่ระบบ
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setError('');
+      setLoading(false);
+      return;
+    }
+    setLoading(false); // Mark loading as false once token check is complete
+  }, []);
+
+  if (loading) return <p>Loading...</p>; // Show loading until token check is complete
 
   return (
     <nav className="navbar">
@@ -25,18 +39,8 @@ const Navbar = () => {
           <Link to="/">หน้าหลัก</Link>
         </li>
         <li>
-          <Link to="/data">คลังข้อมูล</Link>
+          <Link to="/companies">บริษัท</Link>
         </li>
-        <li>
-          <Link to="/stats">สถิติ</Link>
-        </li>
-        <li>
-          <Link to="/search">ค้นหาข้อมูล</Link>
-        </li>
-        <li>
-          <Link to="/faq">คำถามที่พบบ่อย</Link>
-        </li>
-
         {/* แสดงเมนูแตกต่างกันตามสถานะการเข้าสู่ระบบ */}
         {isLoggedIn ? (
           <>
@@ -50,7 +54,7 @@ const Navbar = () => {
         ) : (
           <>
             <li>
-              <Link to="/register" className="nav-links signup">ลงทะเบียน</Link>
+              <Link to="/signup" className="nav-links signup">ลงทะเบียน</Link>
             </li>
             <li>
               <Link to="/login" className="nav-links login">เข้าสู่ระบบ</Link> {/* ปุ่มเข้าสู่ระบบ */}
@@ -58,6 +62,7 @@ const Navbar = () => {
           </>
         )}
       </ul>
+      {error && <p>{error}</p>} {/* Show error if exists */}
     </nav>
   );
 };

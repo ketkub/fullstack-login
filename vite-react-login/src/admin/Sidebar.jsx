@@ -1,22 +1,42 @@
-import React from 'react';
 import { FaHome, FaUpload } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import '../css/Sidebar.css';
 
 function Sidebar() {
+  const navigate = useNavigate();
+
+  // ฟังก์ชันออกจากระบบ
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // ลบ token ที่เก็บไว้
+    navigate('/login'); // เปลี่ยนเส้นทางไปที่หน้า login
+  };
+
   return (
     <div className="sidebar">
-      <h2 className="sidebar-title">Admin</h2>
+      <h2 className="sidebar-title">Admin Panel</h2>
       <ul className="sidebar-menu">
         <li className="menu-item">
-          <FaHome className="icon" />
-          <Link to="/">Home</Link>
+          <Link to="/Admindashboard" className="menu-link">
+            <FaHome className="icon" />
+            <span>Home</span>
+          </Link>
         </li>
         <li className="menu-item">
-          <FaUpload className="icon" />
-          <Link to="/upload-promotion">Upload Promotion</Link>
+          <Link to="/UploadPromotion" className="menu-link">
+            <FaUpload className="icon" />
+            <span>Upload Promotion</span>
+          </Link>
         </li>
-        <li>
-              <button onClick={handleLogout} className="logout-button">ออกจากระบบ</button>
+        <li className="menu-item">
+          <Link to="/AdminCompanyCRUD" className="menu-link">
+            <FaUpload className="icon" />
+            <span>CRUD company</span>
+          </Link>
+        </li>
+        <li className="logout-button-admin">
+          <button onClick={handleLogout} className="logout-button-admin">
+            ออกจากระบบ
+          </button>
         </li>
       </ul>
     </div>
